@@ -23,7 +23,7 @@ function App() {
     };
   }, []);
 
-  const ExternalComponent = (global as any).component?.default;
+  const ExternalComponent = (window as any).component?.default;
 
   return (
     <div className="App">
