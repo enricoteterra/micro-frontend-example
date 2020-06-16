@@ -1,5 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
+declare global {
+  interface Window { 
+    component?: {
+      default: any // type module exports here
+    }; 
+  }
+}
+
 function App() {
   const [state, setState] = useState({
     loaded: false,
@@ -23,7 +31,8 @@ function App() {
     };
   }, []);
 
-  const ExternalComponent = (window as Window).component?.default;
+  // note: component namespace not available immediately
+  const ExternalComponent = window.component?.default;
 
   return (
     <div className="App">
